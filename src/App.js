@@ -1,9 +1,19 @@
-import './App.css';
+import "./App.css";
+// import { Button, Typography } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
+import Dashboard from "./pages/Dashboard";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
     <div className="App">
-      <h4>New Staff Management System</h4>
+      <Routes>
+        <Route path='/' element={<AppLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="sign-in" element={<SignIn />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
