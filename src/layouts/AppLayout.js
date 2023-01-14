@@ -7,7 +7,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -164,7 +163,7 @@ const AppLayout = (props) => {
             <MenuIcon />
           </IconButton>
           <SearchBar />
-          <Box display="flex" alignItems="center" gap={3}>
+          <Box display="flex" alignItems="center" gap={3} ml={2}>
             <Badge color="secondary" variant="dot">
               <NotificationsNoneOutlinedIcon />
             </Badge>
