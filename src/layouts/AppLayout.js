@@ -19,6 +19,8 @@ import SearchBar from "../components/SearchBar";
 import {
   Avatar,
   Badge,
+  BottomNavigation,
+  BottomNavigationAction,
   Card,
   CardActionArea,
   CardActions,
@@ -31,6 +33,8 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import RestoreOutlinedIcon from "@mui/icons-material/RestoreOutlined";
 import FlightTakeoffOutlinedIcon from "@mui/icons-material/FlightTakeoffOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
+import TuneIcon from '@mui/icons-material/Tune';
+import HouseIcon from '@mui/icons-material/House';
 import styled from "@emotion/styled";
 
 const SideBarItems = styled("div")(({ theme }) => ({
@@ -56,6 +60,8 @@ const AppLayout = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
+  const [value, setValue] = React.useState(0);
+
 
   console.log(theme.palette.secondary);
 
@@ -223,7 +229,24 @@ const AppLayout = (props) => {
         <LayoutContainer>
           <Outlet />
         </LayoutContainer>
+        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '0 5px', display: {xs: 'block', sm: 'none' }}} elevation={3}>
+        <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        sx={{paddingLeft: '30px', paddingRight: '30px', height: '70px'}}
+      >
+        <BottomNavigationAction sx={{minWidth: '70px'}} label="Home" icon={<HouseIcon />} />
+        <BottomNavigationAction sx={{minWidth: '70px'}} label="History" icon={< RestoreOutlinedIcon />} />
+        <BottomNavigationAction sx={{minWidth: '70px'}} label="Request" icon={<FlightTakeoffOutlinedIcon />} />
+        <BottomNavigationAction sx={{minWidth: '70px'}} label="Message" icon={<MailIcon />} />
+        <BottomNavigationAction sx={{minWidth: '70px'}} label="Settings" icon={<TuneIcon />} />
+      </BottomNavigation>
+      </Paper>
       </Box>
+      
     </Box>
   );
 };
