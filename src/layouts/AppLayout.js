@@ -33,8 +33,8 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import RestoreOutlinedIcon from "@mui/icons-material/RestoreOutlined";
 import FlightTakeoffOutlinedIcon from "@mui/icons-material/FlightTakeoffOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
-import TuneIcon from '@mui/icons-material/Tune';
-import HouseIcon from '@mui/icons-material/House';
+import TuneIcon from "@mui/icons-material/Tune";
+import HouseIcon from "@mui/icons-material/House";
 import styled from "@emotion/styled";
 
 const SideBarItems = styled("div")(({ theme }) => ({
@@ -49,9 +49,9 @@ const LayoutContainer = styled("div")(({ theme }) => ({
   background: "#fff",
   borderRadius: "30px",
   padding: "20px",
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up("sm")]: {
     padding: "20px 50px",
-  }
+  },
 }));
 
 const drawerWidth = 200;
@@ -61,7 +61,6 @@ const AppLayout = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-
 
   console.log(theme.palette.secondary);
 
@@ -170,10 +169,18 @@ const AppLayout = (props) => {
           </IconButton>
           <SearchBar />
           <Box display="flex" alignItems="center" gap={3} ml={2}>
-            <Badge color="secondary" variant="dot">
+            <IconButton>
+            <Badge color="notificationAlert" variant="dot">
               <NotificationsNoneOutlinedIcon />
             </Badge>
-            <Avatar src="" alt="RC" />
+            </IconButton>
+            <Divider orientation="vertical" flexItem />
+            <Paper elevation={0} sx={{borderRadius: '50px', padding: '5px 3px 5px 12px'}}>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Typography>Buchi</Typography>
+              <Avatar src="" alt="RC" sx={{width: 30, height: 30}}/>
+            </Box>
+            </Paper>
           </Box>
         </Toolbar>
       </AppBar>
@@ -229,24 +236,53 @@ const AppLayout = (props) => {
         <LayoutContainer>
           <Outlet />
         </LayoutContainer>
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '0 5px', display: {xs: 'block', sm: 'none' }}} elevation={3}>
-        <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        sx={{paddingLeft: '30px', paddingRight: '30px', height: '70px'}}
-      >
-        <BottomNavigationAction sx={{minWidth: '70px'}} label="Home" icon={<HouseIcon />} />
-        <BottomNavigationAction sx={{minWidth: '70px'}} label="History" icon={< RestoreOutlinedIcon />} />
-        <BottomNavigationAction sx={{minWidth: '70px'}} label="Request" icon={<FlightTakeoffOutlinedIcon />} />
-        <BottomNavigationAction sx={{minWidth: '70px'}} label="Message" icon={<MailIcon />} />
-        <BottomNavigationAction sx={{minWidth: '70px'}} label="Settings" icon={<TuneIcon />} />
-      </BottomNavigation>
-      </Paper>
+        <Paper
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            padding: "0 5px",
+            display: { xs: "block", sm: "none" },
+          }}
+          elevation={3}
+        >
+          <BottomNavigation
+            showLabels
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            sx={{ paddingLeft: "30px", paddingRight: "30px", height: "70px" }}
+          >
+            <BottomNavigationAction
+              sx={{ minWidth: "70px" }}
+              label="Home"
+              icon={<HouseIcon />}
+            />
+            <BottomNavigationAction
+              sx={{ minWidth: "70px" }}
+              label="History"
+              icon={<RestoreOutlinedIcon />}
+            />
+            <BottomNavigationAction
+              sx={{ minWidth: "70px" }}
+              label="Request"
+              icon={<FlightTakeoffOutlinedIcon />}
+            />
+            <BottomNavigationAction
+              sx={{ minWidth: "70px" }}
+              label="Message"
+              icon={<MailIcon />}
+            />
+            <BottomNavigationAction
+              sx={{ minWidth: "70px" }}
+              label="Settings"
+              icon={<TuneIcon />}
+            />
+          </BottomNavigation>
+        </Paper>
       </Box>
-      
     </Box>
   );
 };
