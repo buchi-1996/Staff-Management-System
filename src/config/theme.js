@@ -1,3 +1,4 @@
+import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -8,6 +9,9 @@ const theme = createTheme({
     },
     accentColor: {
        main: '#66ccff',
+    },
+    notificationAlert: {
+      main: red[600]
     },
     // Text Colors
     buttonText: {
@@ -27,6 +31,14 @@ const theme = createTheme({
         root: {
           fontSize: '1rem',
           borderRadius: '4px'
+        }
+      }
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          // background: '#eee',
+          // borderRadius: '5px'
         }
       }
     }
